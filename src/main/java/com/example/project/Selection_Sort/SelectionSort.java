@@ -7,18 +7,38 @@ import java.io.File;
 public class SelectionSort {
 
     // PART A. implementing selection sort
-    public static int[] selectionSort(int[] elements) {
-       
-        return elements;
-    }
+        public static int[] selectionSort(int[] elements) {
+            for (int i = 0; i < elements.length - 1; i++) {
+                int min = i;
+                for (int j = i + 1; j < elements.length; j++) {
+                    if (elements[j] < elements[min]) {
+                        min = j;
+                    }
+                }
+                int temp = elements[min];
+                elements[min] = elements[i];
+                elements[i] = temp;
+            }
+            return elements;
+        }
+    
 
 
     // PART B. sorting a 1000-word list
     public static ArrayList<String> selectionSortWordList(ArrayList<String> words) {
-       
+        for (int i = 0; i < words.size() - 1; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < words.size(); j++) {
+                if (words.get(j).compareTo(words.get(minIndex)) < 0) {
+                    minIndex = j;
+                }
+            }
+            String temp = words.get(minIndex);
+            words.set(minIndex, words.get(i));
+            words.set(i, temp);
+        }
         return words;
     }
-
     //call this method to load 1000 words into list. Use it to test Part B
     public static ArrayList<String> loadWordsInto(ArrayList<String> wordList) {
         try {
